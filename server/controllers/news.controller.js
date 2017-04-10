@@ -1,3 +1,7 @@
+"use strict";
+
+var Model = require('../models/guardian-content.model');
+
 var handleData = (err, data, res) => {
 	if (err) {
 		res.status(404);	// not found
@@ -6,7 +10,7 @@ var handleData = (err, data, res) => {
 		res.status(200)
 			.json(data);	// ok/found
 	}
-};
+}
 
 var get = (req, res) => {
 	if (req.query.id) {
@@ -22,20 +26,21 @@ var get = (req, res) => {
 	}
 };
 
-var getSection = (req, res) => {
+var getSection = (req, res) =>
 	Model.find()
 		.bySection(req.params.section)
 		.exec((err, data) => 
-handleData(err, data, res))};
+			handleData(err, data, res));
 
-var getLatest = (req, res) =>{
+var getLatest = (req, res) =>
 	Model.find()
 		.latest()
 		.exec((err, data) => 
-handleData(err, data, res))};
-			
-			module.exports = {
+			handleData(err, data, res));
+
+module.exports = {
 	get: get,
 	getSection: getSection,
 	getLatest: getLatest
 }
+

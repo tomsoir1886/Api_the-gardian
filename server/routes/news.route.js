@@ -1,7 +1,7 @@
-"use strict";
-
+'use strict';
+var app      = require('C:/code/server/app');
 var router     = require('express').Router();
-var controller = require('C:/Nodejs/server/controllers/news.controller');
+var controller = require('C:/code/server/controllers/news.controller');
 
 router.get('/', controller.get);
 router.get('/latest', controller.getLatest);
